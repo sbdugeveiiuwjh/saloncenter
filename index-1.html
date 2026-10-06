@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salon Center</title>
+<meta name="description" content="Salon Center: haircut, hair colour, facial, bridal makeup aur spa. Appointment ke liye call ya WhatsApp karein.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3ff;--bg2:#dde6fa;--ink:#0b1030;--plum:#2f5bea;--sage:#6f8fe8;--card:rgba(255,255,255,.55);--line:#fff;--hi:#fff;--sh:#c5d0ec;--sub:#5a6486;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141c38;--bg2:#0b1124;--ink:#eef2ff;--plum:#6f93ff;--sage:#6f93ff;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.1);--hi:rgba(255,255,255,.1);--sh:#070b18;--sub:#9aa6cc}}
+:root[data-theme="dark"]{--bg:#141c38;--bg2:#0b1124;--ink:#eef2ff;--plum:#6f93ff;--sage:#6f93ff;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.1);--hi:rgba(255,255,255,.1);--sh:#070b18;--sub:#9aa6cc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Outfit,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0 0 .5em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.hidden{display:none!important}
+.btn{display:inline-block;background:var(--plum);color:var(--bg);border:0;border-radius:999px;padding:.8em 1.6em;font:500 1rem Outfit,sans-serif;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+/* login */
+#login{--lb1:#eef3ff;--lb2:#dde6fa;--lc:rgba(255,255,255,.55);--li:#0b1030;--ls:#5a6486;--lblue:#2f5bea;--lsh:#c5d0ec;--lhi:#fff;position:relative;overflow:hidden;min-height:100vh;display:grid;place-items:center;padding:28px 22px;background:linear-gradient(160deg,var(--lb1),var(--lb2))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #login{--lb1:#141c38;--lb2:#0b1124;--lc:rgba(255,255,255,.06);--li:#eef2ff;--ls:#9aa6cc;--lsh:#070b18;--lhi:rgba(255,255,255,.1)}}
+:root[data-theme="dark"] #login{--lb1:#141c38;--lb2:#0b1124;--lc:rgba(255,255,255,.06);--li:#eef2ff;--ls:#9aa6cc;--lsh:#070b18;--lhi:rgba(255,255,255,.1)}
+.orb{position:absolute;border-radius:50%;background:linear-gradient(145deg,rgba(110,145,245,.35),rgba(255,255,255,.2));box-shadow:inset 0 0 0 10px rgba(255,255,255,.3)}
+.o1{width:260px;height:260px;left:-110px;top:-110px}.o2{width:150px;height:150px;right:-75px;top:30%}.o3{width:300px;height:300px;right:-130px;bottom:-140px}.o4{width:200px;height:200px;left:-100px;bottom:-100px}
+.login-box{position:relative;width:100%;max-width:380px;text-align:center}
+.neo{background:var(--lc);border:1px solid var(--lhi);box-shadow:6px 8px 20px var(--lsh),-5px -5px 14px var(--lhi)}
+.tile{width:132px;height:132px;margin:0 auto 18px;border-radius:38px;display:grid;place-items:center}
+.login-box h1{font:600 2rem Outfit,sans-serif;color:var(--li);margin:0}
+.sub{letter-spacing:.28em;color:var(--ls);font-size:.85rem;margin:.4em 0 24px}
+.field{position:relative;margin-bottom:14px}
+.field input{height:56px;border-radius:20px;padding:0 3.2rem;color:var(--li);background:var(--lc);border:1px solid var(--lhi);box-shadow:inset 2px 2px 6px rgba(140,155,200,.2),4px 6px 14px var(--lsh)}
+.field .ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:22px;height:22px;stroke:var(--ls);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;padding:10px;cursor:pointer;line-height:0}
+.eye .ic{position:static;transform:none}
+.opts{display:flex;justify-content:space-between;align-items:center;margin:4px 2px 18px;font-size:.92rem;color:var(--li)}
+.opts label{display:flex;align-items:center;gap:10px;margin:0;font-weight:400}
+.opts input{width:22px;height:22px;accent-color:var(--lblue)}
+.opts a{color:var(--lblue);font-weight:500;text-decoration:none}
+.go{position:relative;width:100%;height:58px;border:0;border-radius:999px;color:#fff;font:600 1.1rem Outfit,sans-serif;background:linear-gradient(90deg,#2f6bff,#4a49e8);box-shadow:0 10px 24px rgba(47,91,234,.4);cursor:pointer}
+.go i{position:absolute;right:8px;top:8px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-style:normal}
+.or{display:flex;align-items:center;gap:12px;margin:26px 0 16px;color:var(--ls);font-size:.72rem;letter-spacing:.25em}
+.or:before,.or:after{content:"";flex:1;height:1px;background:var(--lblue);opacity:.5}
+.soc{display:flex;justify-content:center;gap:16px}
+.soc button{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;cursor:pointer;font:700 1.7rem Outfit,sans-serif}
+.tag{margin:26px 0 0;font-size:.72rem;letter-spacing:.3em;color:var(--ls)}
+.login-box .hint{color:var(--ls);margin:14px 0 0}
+.moon{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;width:50px;height:50px;border-radius:16px;cursor:pointer;font-size:1.2rem;z-index:2}
+label{display:block;font-weight:500;margin:1em 0 .3em}
+input,textarea,select{width:100%;padding:.8em 1em;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit}
+.err{color:#b3261e;min-height:1.4em;margin:.6em 0 0;font-size:.95rem}
+.hint{font-size:.85rem;opacity:.7}
+/* site (login jaisa neo-blue style) */
+html{scroll-padding-top:96px}
+body{background:linear-gradient(160deg,var(--bg),var(--bg2)) fixed}
+.nu,.hero,.menu li,form,header{background:var(--card);border:1px solid var(--hi);box-shadow:6px 8px 20px var(--sh),-5px -5px 14px var(--hi)}
+.btn{background:linear-gradient(90deg,#2f6bff,#4a49e8);color:#fff;box-shadow:0 10px 24px rgba(47,91,234,.35)}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--hi);box-shadow:4px 6px 14px var(--sh)}
+header{position:sticky;top:calc(10px + env(safe-area-inset-top,0px));z-index:5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:12px auto 0;width:calc(100% - 32px);max-width:928px;padding:10px 14px 10px 20px;border-radius:24px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.logo{font:600 1.05rem Outfit,sans-serif;text-decoration:none;color:var(--ink)}
+nav{display:flex;gap:14px;align-items:center;font-size:.92rem;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink)}
+nav button{padding:.45em 1.1em;font-size:.88rem}
+.hero{position:relative;overflow:hidden;width:calc(100% - 32px);max-width:928px;margin:20px auto 0;padding:44px 24px;border-radius:36px}
+.hero:after{content:"";position:absolute;right:-80px;top:-80px;width:220px;height:220px;border-radius:50%;background:linear-gradient(145deg,rgba(110,145,245,.35),rgba(255,255,255,.2));box-shadow:inset 0 0 0 10px rgba(255,255,255,.3);pointer-events:none}
+.hero h1,section h2,.band h3{font-family:Outfit,sans-serif;font-weight:600;color:var(--ink)}
+.band h3{color:#fff}
+.hero h1{font-size:clamp(2rem,7vw,3.6rem);max-width:14ch;position:relative}
+.hero p{max-width:34ch;font-size:1.05rem;color:var(--sub);position:relative}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;position:relative}
+section{padding:44px 16px 8px;max-width:928px;margin:auto}
+section h2{font-size:clamp(1.7rem,6vw,2.4rem)}
+.menu{list-style:none;padding:0;margin:0;display:grid;gap:14px;border:0}
+.menu li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border-radius:24px}
+.menu b{font-weight:500}.menu span.d{display:block;font-size:.9rem;color:var(--sub)}
+.menu .p{font:600 1.1rem Outfit,sans-serif;color:var(--plum);white-space:nowrap}
+.about{display:grid;gap:24px}
+.band{background:linear-gradient(135deg,#2f6bff,#4a49e8);color:#fff;border-radius:28px;padding:28px;box-shadow:0 12px 28px rgba(47,91,234,.35)}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:16px}
+.stats div{font:600 1.8rem Outfit,sans-serif}.stats small{display:block;font:400 .85rem Outfit,sans-serif;opacity:.85}
+#contact{border-top:0;padding-bottom:40px}
+form{max-width:520px;padding:24px;border-radius:30px}
+label{color:var(--ink)}
+section input,section textarea,section select{border-radius:18px;background:var(--card);color:var(--ink);border:1px solid var(--hi);box-shadow:inset 2px 2px 6px rgba(140,155,200,.2),3px 5px 12px var(--sh)}
+.ok{display:none;padding:12px 16px;border-radius:14px;background:rgba(47,91,234,.14);color:var(--ink);margin-top:16px}
+.hint{color:var(--sub)}
+.swap{margin:14px 0 0}.swap a{color:var(--lblue);font-weight:500;text-decoration:none}
+.sm{padding:.45em 1em;font-size:.85rem}.acts{display:flex;gap:8px}#alist li{flex-wrap:wrap}
+footer{padding:24px 20px 32px;text-align:center;font-size:.9rem;color:var(--sub)}
+.cards{display:grid;gap:14px;margin:18px 0 12px}
+.cc{display:flex;flex-direction:column;gap:2px;padding:16px 20px;border-radius:22px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--hi);box-shadow:6px 8px 20px var(--sh),-5px -5px 14px var(--hi)}
+.cc b{font-weight:500}.cc span{color:var(--plum);font-weight:500;overflow-wrap:anywhere}
+.info{color:var(--sub);margin:0 0 24px}.info b{color:var(--ink);font-weight:500}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;z-index:6}
+.fab a{display:grid;place-items:center;height:48px;padding:0 20px;border-radius:999px;color:#fff;text-decoration:none;font-weight:500;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.fab .w{background:#1f9d4d}.fab .c{background:linear-gradient(90deg,#2f6bff,#4a49e8)}
+footer{line-height:1.8}
+@media(min-width:640px){.cards{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:760px){.about{grid-template-columns:1.2fr 1fr;align-items:start}}
+</style>
+</head>
+<body>
+
+<!-- 1. LOGIN -->
+<main id="login">
+  <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="orb o4"></i>
+  <button class="moon neo" type="button" onclick="toggleTheme()" aria-label="Dark mode badlein">🌙</button>
+  <div class="login-box">
+    <div class="tile neo">
+      <svg width="76" height="76" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M52 12C72 16 84 30 74 54C70 40 62 34 50 32C56 26 56 20 52 12Z" fill="#e6eaff"/>
+        <path d="M40 32C60 36 68 52 58 72C52 82 44 84 38 84C48 70 46 54 32 44C34 40 36 36 40 32Z" fill="#3b72f6"/>
+        <path d="M24 46C44 50 50 66 40 84C34 92 26 94 20 92C30 80 28 62 16 56C18 52 20 48 24 46Z" fill="#1f45d6"/>
+      </svg>
+    </div>
+    <h1 id="ttl">Welcome Back</h1>
+    <p class="sub" id="sub">Sign in to continue</p>
+    <form id="loginForm" onsubmit="return doLogin(event)">
+      <div class="field">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        <input id="u" type="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <input id="p" type="password" placeholder="Password" aria-label="Password" autocomplete="current-password" required>
+        <button class="eye" type="button" onclick="togglePw()" aria-label="Password dikhayein"><svg class="ic" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      </div>
+      <div class="opts">
+        <label><input type="checkbox" id="rem"> Remember Me</label>
+        <a href="#" onclick="return forgot()">Forgot Password?</a>
+      </div>
+      <button class="go" type="submit"><span id="goTxt">Login</span> <i>→</i></button>
+      <p class="err" id="err" role="alert"></p>
+      <p class="swap"><a href="#" id="swap" onclick="return swap()">Naye hain? Account banayein</a></p>
+    </form>
+    <div class="or">OR CONTINUE WITH</div>
+    <div class="soc"><button type="button" class="neo" onclick="social('g')" aria-label="Google se login" style="color:#4285f4">G</button><button type="button" class="neo" onclick="social('f')" aria-label="Facebook se login" style="color:#1877f2">f</button></div>
+    <p class="tag">STYLE • CARE • GLOW</p>
+      </div>
+</main>
+
+<!-- 2. WEBSITE -->
+<div id="site" class="hidden">
+  <header>
+    <a class="logo" href="#top">Salon Center</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="btn ghost hidden" id="adminBtn" onclick="show('admin')">Admin</button>
+      <button class="btn ghost" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <div class="hero" id="top">
+    <h1>Professional hair, skin aur bridal care.</h1>
+    <p>Experienced stylists, saaf-suthra mahaul aur bharosemand service. Appointment ke liye call ya WhatsApp karein.</p>
+    <div class="row">
+      <a class="btn" href="#contact">Appointment book karein</a>
+      <a class="btn ghost" href="#services">Services dekhein</a>
+    </div>
+  </div>
+
+  <!-- 3. SERVICES -->
+  <section id="services">
+    <h2>Services</h2>
+    <ul class="menu" id="menu"></ul>
+    <p class="hint">Final price service aur baalon ki length ke hisaab se thoda alag ho sakta hai.</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about">
+      <div>
+        <h2>About us</h2>
+        <p>Salon Center 2014 se parivaar ke har sadasya ke liye saaf-suthri aur bharosemand salon seva de raha hai. Hamari team har customer ki baat sunkar hi kaam shuru karti hai.</p>
+      </div>
+      <div class="band">
+        <h3>Ek nazar mein</h3>
+        <div class="stats">
+          <div>10+<small>saal ka anubhav</small></div>
+          <div>5,000+<small>khush customers</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONTACT US (sabse neeche) + FORMSPREE -->
+  <section id="contact">
+    <h2>Contact us</h2>
+    <div class="cards">
+      <a class="cc" id="cCall" href="#"><b>Call karein</b><span id="tPhone"></span></a>
+      <a class="cc" id="cWa" href="#" target="_blank" rel="noopener"><b>WhatsApp</b><span>Seedha message bhejein</span></a>
+      <a class="cc" id="cMail" href="#"><b>Email</b><span id="tMail"></span></a>
+    </div>
+    <p class="info"><b>Address:</b> <span id="tAddr"></span><br><b>Samay:</b> <span id="tHours"></span></p>
+    <p>Ya neeche ka form bharein, hum aapko jald call karenge.</p>
+    <form id="cf" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label for="n">Naam</label>
+      <input id="n" name="name" required>
+      <label for="ph">Phone</label>
+      <input id="ph" name="phone" type="tel" required>
+      <label for="em">Email</label>
+      <input id="em" name="email" type="email">
+      <label for="sv">Service</label>
+      <select id="sv" name="service">
+        <option>Haircut &amp; Styling</option><option>Hair Colour</option><option>Facial</option>
+        <option>Bridal Makeup</option><option>Manicure &amp; Pedicure</option><option>Head Massage &amp; Spa</option>
+      </select>
+      <label for="ms">Message</label>
+      <textarea id="ms" name="message" rows="4"></textarea>
+      <input type="hidden" name="_subject" value="Naya appointment - Salon Center">
+      <p style="margin-top:20px"><button class="btn" type="submit">Bhejein</button></p>
+      <div class="ok" id="ok">Shukriya! Aapka message mil gaya.</div>
+    </form>
+  </section>
+
+  <div class="fab">
+    <a class="w" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+    <a class="c" id="fabCall" href="#" aria-label="Call karein">Call</a>
+  </div>
+
+  <footer>© 2026 Salon Center. Sabhi adhikar surakshit.<br><span id="fPhone"></span> · <span id="fMail"></span></footer>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin" class="hidden">
+  <header>
+    <span class="logo">Salon Center · Admin</span>
+    <nav>
+      <button class="btn ghost" onclick="show('site')">Website dekhein</button>
+      <button class="btn ghost" onclick="logout()">Logout</button>
+    </nav>
+  </header>
+  <section>
+    <h2>Services manage karein</h2>
+    <form id="sf" onsubmit="return saveSvc(event)">
+      <label for="sn">Kaam / service ka naam</label>
+      <input id="sn" required>
+      <label for="sd">Chhota vivaran</label>
+      <input id="sd">
+      <label for="sp">Price (jaise ₹400)</label>
+      <input id="sp" required>
+      <p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit" id="sb">Add karein</button><button class="btn ghost hidden" type="button" id="sc" onclick="resetForm()">Cancel</button></p>
+    </form>
+    <h3 style="margin-top:32px">Abhi ki list (<span id="cnt"></span>)</h3>
+    <ul class="menu" id="alist"></ul>
+    <p class="ok" id="aok" role="status"></p>
+    <p class="hint">Badlav save hote hi sabhi visitors ko dikhne lagte hain.</p>
+    <p style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn ghost" type="button" onclick="resetAll()">Default par wapas</button></p>
+  </section>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+/* === APNI DETAILS YAHAN BADLEIN === */
+var CFG={phone:"919876543210",phoneShow:"+91 98765 43210",email:"hello@saloncenter.in",address:"Shop No. 12, Main Market, Aapka Shehar - 000000",hours:"Roz subah 10 baje se raat 8 baje tak"};
+var ADMIN_EMAILS=["YOUR_EMAIL@gmail.com"]; /* owner/admin ka email (chhote akshar mein) */
+var firebaseConfig={apiKey:"AIzaSyAU2IT7nrGcQnGlI5SDoTl7l0plC9BSy9w",authDomain:"salon-center-39e4f.firebaseapp.com",projectId:"salon-center-39e4f",storageBucket:"salon-center-39e4f.firebasestorage.app",messagingSenderId:"911135655547",appId:"1:911135655547:web:230acb7b1455f8d49484de"};
+firebase.initializeApp(firebaseConfig);
+var auth=firebase.auth(),db=firebase.firestore(),ref=db.collection("site").doc("services");
+function $(i){return document.getElementById(i)}
+(function(){
+  var wa="https://wa.me/"+CFG.phone+"?text="+encodeURIComponent("Namaste, mujhe appointment book karni hai.");
+  var tel="tel:+"+CFG.phone, ml="mailto:"+CFG.email;
+  $("cCall").href=tel;$("fabCall").href=tel;$("cWa").href=wa;$("fabWa").href=wa;$("cMail").href=ml;
+  $("tPhone").textContent=CFG.phoneShow;$("tMail").textContent=CFG.email;
+  $("tAddr").textContent=CFG.address;$("tHours").textContent=CFG.hours;
+  $("fPhone").textContent=CFG.phoneShow;$("fMail").textContent=CFG.email;
+})();
+var signup=false,isAdmin=false;
+function show(v){if(v==="admin"&&!isAdmin)v="site";["login","site","admin"].forEach(function(id){$(id).classList.toggle("hidden",id!==v)});window.scrollTo(0,0)}
+function say(t){$("err").textContent=t}
+function nice(e){var m={"auth/invalid-credential":"Email ya password galat hai.","auth/wrong-password":"Email ya password galat hai.","auth/user-not-found":"Is email se account nahi mila.","auth/email-already-in-use":"Is email se account pehle se hai. Login karein.","auth/weak-password":"Password kam se kam 6 akshar ka rakhein.","auth/invalid-email":"Email sahi likhein.","auth/too-many-requests":"Bahut koshish ho gayi, thodi der baad try karein.","auth/popup-closed-by-user":"","auth/cancelled-popup-request":"","auth/network-request-failed":"Internet check karein.","auth/operation-not-allowed":"Yeh login tareeka abhi chalu nahi hai.","auth/unauthorized-domain":"Is website ka domain Firebase ke Authorized domains mein jodein."};var c=e&&e.code;return c in m?m[c]:"Kuch galat hua. Dobara try karein."}
+function swap(){signup=!signup;$("ttl").textContent=signup?"Create Account":"Welcome Back";$("sub").textContent=signup?"Sign up to continue":"Sign in to continue";$("goTxt").textContent=signup?"Sign up":"Login";$("swap").textContent=signup?"Pehle se account hai? Login karein":"Naye hain? Account banayein";say("");return false}
+function doLogin(e){e.preventDefault();say("");var em=$("u").value.trim(),pw=$("p").value,A=firebase.auth.Auth.Persistence;
+  auth.setPersistence($("rem").checked?A.LOCAL:A.SESSION).then(function(){
+    return signup?auth.createUserWithEmailAndPassword(em,pw).then(function(c){return c.user.sendEmailVerification().catch(function(){})}):auth.signInWithEmailAndPassword(em,pw)
+  }).catch(function(x){say(nice(x))});return false}
+function social(k){say("");var pr=k==="g"?new firebase.auth.GoogleAuthProvider():new firebase.auth.FacebookAuthProvider();auth.signInWithPopup(pr).catch(function(x){say(nice(x))})}
+function forgot(){var em=$("u").value.trim();if(!em){say("Pehle upar apna email likhein.");return false}auth.sendPasswordResetEmail(em).then(function(){say("Password reset ka link aapke email par bhej diya hai.")}).catch(function(x){say(nice(x))});return false}
+function logout(){auth.signOut()}
+auth.onAuthStateChanged(function(u){
+  if(u){isAdmin=!!(u.emailVerified&&u.email&&ADMIN_EMAILS.indexOf(u.email.toLowerCase())>-1);$("adminBtn").classList.toggle("hidden",!isAdmin);show(isAdmin?"admin":"site")}
+  else{isAdmin=false;show("login")}
+});
+function togglePw(){var p=$("p");p.type=p.type==="password"?"text":"password"}
+function toggleTheme(){var r=document.documentElement,a=r.getAttribute("data-theme");var d=a?a==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.setAttribute("data-theme",d?"light":"dark")}
+
+/* === SERVICES (Firestore se, sabhi visitors ko dikhti hain) === */
+var DEF=[{"n":"Haircut & Styling","d":"Wash, cut aur blow-dry","p":"₹400"},{"n":"Hair Colour","d":"Global colour ya highlights","p":"₹1,800"},{"n":"Facial","d":"Skin type ke hisaab se","p":"₹900"},{"n":"Bridal Makeup","d":"Trial ke saath","p":"₹8,000"},{"n":"Manicure & Pedicure","d":"Clean, shape aur polish","p":"₹700"},{"n":"Head Massage & Spa","d":"45 minute","p":"₹600"}];
+var services=DEF.slice(),editing=-1;
+function row(s){var li=document.createElement("li"),d=document.createElement("div"),b=document.createElement("b"),t=document.createElement("span"),pr=document.createElement("span");b.textContent=s.n;t.className="d";t.textContent=s.d||"";pr.className="p";pr.textContent=s.p;d.appendChild(b);d.appendChild(t);li.appendChild(d);li.appendChild(pr);return li}
+function mk(t,f){var b=document.createElement("button");b.type="button";b.className="btn ghost sm";b.textContent=t;b.onclick=f;return b}
+function render(){var m=$("menu"),a=$("alist");m.innerHTML="";a.innerHTML="";services.forEach(function(s,i){m.appendChild(row(s));var li=row(s),box=document.createElement("div");box.className="acts";box.appendChild(mk("Edit",function(){editSvc(i)}));box.appendChild(mk("Delete",function(){delSvc(i)}));li.appendChild(box);a.appendChild(li)});$("cnt").textContent=services.length}
+function msg(t){var o=$("aok");o.textContent=t;o.style.display="block";setTimeout(function(){o.style.display="none"},3000)}
+function persist(ok){render();if(!isAdmin){msg("Sirf admin badal sakta hai.");return}ref.set({list:services}).then(function(){msg(ok)}).catch(function(){msg("Save nahi hua. Firestore rules check karein.")})}
+ref.onSnapshot(function(d){if(d.exists&&Array.isArray(d.data().list))services=d.data().list;render()},function(){render()});
+function saveSvc(e){e.preventDefault();var o={n:$("sn").value.trim(),d:$("sd").value.trim(),p:$("sp").value.trim()},was=editing>=0;if(was)services[editing]=o;else services.push(o);resetForm();persist(was?"Service update ho gayi.":"Nayi service add ho gayi.");return false}
+function editSvc(i){editing=i;$("sn").value=services[i].n;$("sd").value=services[i].d||"";$("sp").value=services[i].p;$("sb").textContent="Update karein";$("sc").classList.remove("hidden");$("sf").scrollIntoView({behavior:"smooth"})}
+function delSvc(i){if(confirm("Is service ko hatana hai?")){services.splice(i,1);persist("Service hata di gayi.")}}
+function resetForm(){editing=-1;$("sf").reset();$("sb").textContent="Add karein";$("sc").classList.add("hidden")}
+function resetAll(){if(confirm("Saari services default list par wapas karein?")){services=DEF.slice();persist("Default list wapas aa gayi.")}}
+render();
+
+/* Formspree: page chhode bina bhejein (fetch). Fail ho to normal submit chalega. */
+$("cf").addEventListener("submit",function(e){
+  var f=e.target;
+  if(!window.fetch) return;
+  e.preventDefault();
+  fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
+   .then(function(r){ if(r.ok){f.reset();$("ok").style.display="block"} else {f.submit()} })
+   .catch(function(){f.submit()});
+});
+</script>
+</body>
+</html>
